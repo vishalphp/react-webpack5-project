@@ -9,6 +9,8 @@ module.exports = {
     output:{
         path: path.join(__dirname,'dist'),
         filename: 'output.js',
+       // asyncChunks: true,
+       // chunkFilename: '[name].output.js'
         //assetModuleFilename: 'images/[name][ext]'
     },
     performance: {
