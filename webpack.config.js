@@ -1,6 +1,7 @@
 const path = require('path');
 const port = process.env.port | 7000;
 const HtmlWebpackplugin = require('html-webpack-plugin');
+const MinicssExtractPl = require('mini-css-extract-plugin');
 
 module.exports = {
 
@@ -35,7 +36,11 @@ module.exports = {
           {
             test: /\.css$/,
             exclude: '/node_modules',
-            use: ["style-loader","css-loader"],
+            use: [
+              MinicssExtractPl.loader,
+              //"style-loader",
+              "css-loader"
+             ],
           },
           {
             test: /\.html$/,
@@ -58,6 +63,8 @@ module.exports = {
       },
       plugins: [new HtmlWebpackplugin({
         template:'./src/index.html'
-      })],
+      }),
+      new MinicssExtractPl({filename: '[name].[fullhash].css'})
+    ],
 
 }
